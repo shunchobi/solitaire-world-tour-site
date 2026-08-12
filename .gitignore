@@ -1,0 +1,7 @@
+.DS_Store
+
+# デザイン仕様。作業用のメモなので公開しない。
+.design/
+
+# build-fonts.py が作る一時ファイル(通常は自分で消える)。
+tools/.chars-*.txt

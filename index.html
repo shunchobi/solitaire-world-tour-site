@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SolitaireWorld</title>
+<meta name="description" content="SolitaireWorld — 世界一周ソリティア。プライバシーポリシーとサポートのご案内。A solitaire game that takes you around the world. Privacy policy and support.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/mplus-rounded1c-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<script>
+/* 描画前に表示言語を決めてちらつきを防ぐ。切り替えの配線は assets/lang.js。
+   優先順は ?lang= → 保存値 → 端末の言語。3 ページで同一内容に保つこと。 */
+(function () {
+  var d = document.documentElement, lang = null, saved = null;
+  var m = /[?&]lang=(ja|en)(?:&|$)/.exec(window.location.search);
+  if (m) { lang = m[1]; }
+  if (!lang) {
+    try { saved = window.localStorage.getItem("swlang"); } catch (e) {}
+    if (saved === "ja" || saved === "en") { lang = saved; }
+  }
+  if (!lang) { lang = /^ja/i.test(navigator.language || "") ? "ja" : "en"; }
+  d.className += (d.className ? " " : "") + "js";
+  d.setAttribute("data-active-lang", lang);
+  d.setAttribute("lang", lang);
+})();
+</script>
+</head>
+<body class="page">
+
+<a class="skip" href="#main"><span class="t" data-lang="ja">本文へスキップ</span><span class="t" data-lang="en">Skip to content</span></a>
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href="./"><span class="wordmark__suit" aria-hidden="true">&#9670;</span>SolitaireWorld</a>
+    <div class="lang" role="group" aria-label="言語 / Language">
+      <button type="button" class="lang__btn" data-set-lang="ja" aria-pressed="true">日本語</button>
+      <button type="button" class="lang__btn" data-set-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="prose">
+  <div class="shell">
+
+    <div data-lang="ja">
+      <div class="page-head">
+        <h1>SolitaireWorld</h1>
+        <p class="lead">ソリティアを遊んでコインを貯め、世界の都市をひとつずつ巡る、癒やし系の一人用ゲームです。クリアするたびに滞在中の街の豆知識がひとつ開き、スタンプと絵葉書が旅の記録として残っていきます。</p>
+      </div>
+
+      <ul class="portal">
+        <li class="portal__item">
+          <a href="privacy.html">
+            <span class="portal__title">プライバシーポリシー</span>
+            <span class="portal__desc">このアプリが取得する情報、取得しない情報、その使い道についてご説明します。</span>
+          </a>
+        </li>
+        <li class="portal__item">
+          <a href="support.html">
+            <span class="portal__title">サポート・お問い合わせ</span>
+            <span class="portal__desc">よくあるご質問と、お問い合わせ先をご案内します。</span>
+          </a>
+        </li>
+      </ul>
+
+      <h2>提供者</h2>
+      <div class="card">
+        <p class="contact">oneWheat</p>
+        <p class="contact__note">お問い合わせ:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+      </div>
+    </div>
+
+    <div data-lang="en">
+      <div class="page-head">
+        <h1>SolitaireWorld</h1>
+        <p class="lead">A gentle single-player game about travelling the world. Play solitaire, save up coins, and visit cities one at a time. Every win opens a new piece of trivia about the city you are staying in, and your stamps and postcards build up into a record of the journey.</p>
+      </div>
+
+      <ul class="portal">
+        <li class="portal__item">
+          <a href="privacy.html">
+            <span class="portal__title">Privacy Policy</span>
+            <span class="portal__desc">What the app collects, what it does not collect, and how the information is used.</span>
+          </a>
+        </li>
+        <li class="portal__item">
+          <a href="support.html">
+            <span class="portal__title">Support &amp; Contact</span>
+            <span class="portal__desc">Frequently asked questions and how to get in touch with us.</span>
+          </a>
+        </li>
+      </ul>
+
+      <h2>Publisher</h2>
+      <div class="card">
+        <p class="contact">oneWheat</p>
+        <p class="contact__note">Contact:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-nav">
+      <ul class="footer-links">
+        <li><a href="./"><span class="t" data-lang="ja">ホーム</span><span class="t" data-lang="en">Home</span></a></li>
+        <li><a href="privacy.html"><span class="t" data-lang="ja">プライバシーポリシー</span><span class="t" data-lang="en">Privacy Policy</span></a></li>
+        <li><a href="support.html"><span class="t" data-lang="ja">サポート</span><span class="t" data-lang="en">Support</span></a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="言語 / Language">
+        <button type="button" class="lang__btn" data-set-lang="ja" aria-pressed="true">日本語</button>
+        <button type="button" class="lang__btn" data-set-lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>oneWheat</p>
+      <p><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+      <p class="copyright">&copy; 2026 oneWheat</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/lang.js"></script>
+</body>
+</html>

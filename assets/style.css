@@ -1,0 +1,705 @@
+@charset "UTF-8";
+
+/* SolitaireWorld 公開ページ 共通スタイル
+   設計は .design/DESIGN_BRIEF.md、色は docs/design/worldview.md のカラートークンに準拠。
+   純黒は使わない。影は暖かいセピアで作る。 */
+
+/* ---------------------------------------------------------------- font */
+/* リポジトリの TTF から作った woff2 サブセット。tools/build-fonts.sh で再生成する。 */
+@font-face {
+  font-family: "M PLUS Rounded 1c Subset";
+  src: url("fonts/mplus-rounded1c-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "M PLUS Rounded 1c Subset";
+  src: url("fonts/mplus-rounded1c-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------- tokens */
+:root {
+  color-scheme: light;
+
+  --cream: #fbf7ee;
+  --surface: #fffdf8;
+  --border: #e6dabf;
+  --divider: #eae2d0;
+
+  /* 文字に使える色。cream 地でのコントラスト比を併記する。 */
+  --ink: #5a4636;      /* 8.30:1 — 本文・見出し */
+  --ink-mid: #6e5a44;  /* 6.12:1 — 副次テキスト(worldview.md の pinStroke) */
+  --link: #c4442d;     /* 4.66:1 — リンク文字。cream を載せても 4.66:1 */
+
+  /* 文字に使わない色。装飾・塗りのみ。 */
+  --accent: #e85c43;   /* 3.25:1 — 罫線・フォーカスリング・下線 */
+  --gold: #edb23e;     /* 1.78:1 — 差し色 */
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s6: 24px;
+  --s8: 32px;
+  --s12: 48px;
+  --s16: 64px;
+  --s24: 96px;
+
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-pill: 999px;
+
+  --shadow-subtle: 0 1px 2px rgba(90, 70, 54, 0.06), 0 6px 20px rgba(90, 70, 54, 0.05);
+
+  /* サブセットが落ちても丸ゴシックであることは保たれるよう、
+     ui-rounded と ヒラギノ丸ゴ を先に置く。 */
+  --font-sans: "M PLUS Rounded 1c Subset", "M PLUS Rounded 1c", "Rounded Mplus 1c",
+    ui-rounded, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic Medium",
+    "Noto Sans JP", system-ui, sans-serif;
+
+  /* ヘッダー・本文・フッターを同じ幅にして、ページの左端を一本に通す。 */
+  --measure: 40rem;
+}
+
+/* ---------------------------------------------------------------- reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--ink);
+  background-color: var(--cream);
+  /* 上端のやわらかい朱の滲みと、水彩紙のざらつき。どちらもごく薄く敷くだけ。 */
+  background-image:
+    radial-gradient(130% 52% at 50% -8%, rgba(232, 92, 67, 0.06), rgba(232, 92, 67, 0) 68%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, repeat;
+  background-attachment: fixed, scroll;
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ------------------------------------------------------------ 言語切替 */
+/* 既定は日英とも表示する。JavaScript が有効なときだけ片方を隠す。
+   これで審査担当の環境で JS が無効でも、両言語とも必ず読める。 */
+html.js[data-active-lang="ja"] [data-lang="en"],
+html.js[data-active-lang="en"] [data-lang="ja"] {
+  display: none;
+}
+
+/* JS 無効時、隣り合う短い文字列の区切り。 */
+html:not(.js) .t[data-lang="en"]::before {
+  content: " / ";
+  color: var(--ink-mid);
+}
+
+/* JS 無効時は切り替えボタンが働かないので出さない。 */
+html:not(.js) .lang {
+  display: none;
+}
+
+/* -------------------------------------------------------- skip link */
+.skip {
+  position: absolute;
+  left: var(--s4);
+  top: calc(-1 * var(--s16));
+  z-index: 10;
+  padding: var(--s3) var(--s6);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 140ms ease-out;
+}
+
+.skip:focus-visible {
+  top: var(--s4);
+}
+
+/* ------------------------------------------------------------- shell */
+.shell {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ------------------------------------------------------------ header */
+.site-header {
+  border-bottom: 1px solid var(--divider);
+  background: rgba(255, 253, 248, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s3);
+  padding-block: var(--s4);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s2);
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.wordmark__suit {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.wordmark:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.lang {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+}
+
+.lang__btn {
+  min-height: 38px;
+  padding: 7px 16px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: background-color 140ms ease-out, color 140ms ease-out;
+}
+
+.lang__btn:hover {
+  background: rgba(232, 92, 67, 0.09);
+}
+
+.lang__btn:active {
+  background: rgba(232, 92, 67, 0.16);
+}
+
+/* 選択中。地は --accent(3.25:1)ではなく --link を使う。
+   cream の文字を載せて 4.66:1 になり、通常サイズの文字でも AA を満たす。 */
+.lang__btn[aria-pressed="true"] {
+  background: var(--link);
+  color: var(--cream);
+}
+
+/* --------------------------------------------------------- page head */
+.page-head {
+  padding-block: var(--s16) var(--s8);
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.page-head h1::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: var(--s4);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+}
+
+.lead {
+  max-width: 34rem;
+  margin: var(--s6) 0 0;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+}
+
+.updated {
+  margin: var(--s4) 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------- prose */
+.prose {
+  padding-bottom: var(--s16);
+}
+
+.prose h2 {
+  margin: var(--s12) 0 var(--s4);
+  padding-top: var(--s6);
+  border-top: 1px solid var(--divider);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.5;
+  scroll-margin-top: var(--s6);
+}
+
+/* 見出しの前の余白は、文書の途中では広く取りたいが、
+   リード文のすぐ下に来る最初の見出しでは空きすぎる。 */
+.page-head + h2 {
+  margin-top: var(--s6);
+}
+
+.prose h3 {
+  margin: var(--s8) 0 var(--s3);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin: 0 0 1em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}
+
+.prose li::marker {
+  color: var(--ink-mid);
+}
+
+.prose a,
+.footer-links a,
+.contact a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-thickness 120ms ease-out;
+}
+
+.prose a:hover,
+.footer-links a:hover,
+.contact a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.prose strong {
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------- toc */
+.toc {
+  margin: var(--s8) 0 0;
+  padding: var(--s6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.toc h2 {
+  margin: 0 0 var(--s3);
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink-mid);
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: 1.3em;
+  columns: 1;
+}
+
+.toc li {
+  margin-bottom: 0.3em;
+  line-height: 1.7;
+}
+
+.toc a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* -------------------------------------------------------------- card */
+.card {
+  margin: var(--s6) 0;
+  padding: var(--s6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.card > :first-child {
+  margin-top: 0;
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.contact {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.contact__note {
+  margin-top: var(--s2);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- faq */
+.faq {
+  margin: var(--s6) 0 0;
+  border-top: 1px solid var(--divider);
+}
+
+.faq__item {
+  padding-block: var(--s6);
+  border-bottom: 1px solid var(--divider);
+}
+
+.faq__q {
+  margin: 0 0 var(--s3);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.faq__item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------- table */
+.table-wrap {
+  margin: var(--s4) 0 var(--s6);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+tbody th[scope="row"] {
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: var(--s3) var(--s4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--divider);
+}
+
+thead th {
+  font-weight: 700;
+  white-space: nowrap;
+  background: rgba(234, 226, 208, 0.4);
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ------------------------------------------------------------ portal */
+/* index の 2 つの入口。カード全体がリンク。
+   `.prose ul` の字下げに負けないよう、詳細度を合わせておく。 */
+.prose .portal {
+  display: grid;
+  gap: var(--s4);
+  margin: var(--s8) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portal__item a {
+  display: block;
+  padding: var(--s6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 140ms ease-out, box-shadow 140ms ease-out,
+    transform 140ms ease-out;
+}
+
+.portal__item a:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-subtle);
+  transform: translateY(-2px);
+}
+
+.portal__title {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.portal__title::after {
+  content: "→";
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.portal__desc {
+  margin: var(--s2) 0 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------ footer */
+.site-footer {
+  margin-top: auto;
+  padding-block: var(--s8) var(--s12);
+  border-top: 1px solid var(--divider);
+  background: rgba(255, 253, 248, 0.5);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s6);
+}
+
+/* 長い法務ページではヘッダーのトグルまで戻るのが遠いので、フッターにも同じものを置く。 */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s4);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-meta p {
+  margin: 0;
+}
+
+.footer-meta .copyright {
+  margin-top: var(--s2);
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------ layout */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* -------------------------------------------------------- responsive */
+/* 狭い画面では表を行ごとのブロックに積み替える。3 列のまま横スクロールさせると
+   1 列目が 1 文字ずつ折り返してしまい、いちばん読ませたい表が読めなくなるため。
+   隠れた列見出しは各セルの data-label から補う。 */
+@media (max-width: 599px) {
+  .table-wrap {
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .table-wrap thead {
+    display: none;
+  }
+
+  .table-wrap table,
+  .table-wrap tbody,
+  .table-wrap tr,
+  .table-wrap th,
+  .table-wrap td {
+    display: block;
+    width: auto;
+    min-width: 0;
+  }
+
+  .table-wrap th,
+  .table-wrap td {
+    padding: 0;
+    border: 0;
+  }
+
+  .table-wrap tbody tr {
+    margin-bottom: var(--s4);
+    padding: var(--s4);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--surface);
+  }
+
+  .table-wrap tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .table-wrap tbody th[scope="row"] {
+    margin-bottom: var(--s3);
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .table-wrap td {
+    margin-top: var(--s3);
+  }
+
+  .table-wrap td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink-mid);
+  }
+}
+
+@media (min-width: 600px) {
+  .shell {
+    padding-inline: 32px;
+  }
+
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .page-head h1 {
+    font-size: 34px;
+  }
+
+  .toc ol {
+    columns: 2;
+    column-gap: var(--s8);
+  }
+
+  .toc li {
+    break-inside: avoid;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--s8);
+  }
+}
+
+/* --------------------------------------------------------- 動きの抑制 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------- 印刷 */
+@media print {
+  html.js [data-lang] {
+    display: revert !important;
+  }
+
+  body {
+    background: #fff;
+    color: #3d3025;
+  }
+
+  .site-header,
+  .skip,
+  .lang,
+  .toc {
+    display: none;
+  }
+
+  .prose a::after {
+    content: " (" attr(href) ")";
+    font-size: 11px;
+    word-break: break-all;
+  }
+}
