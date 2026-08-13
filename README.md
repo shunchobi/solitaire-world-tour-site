@@ -1,4 +1,4 @@
-# SolitaireWorld 公開ページ
+# ソリティア世界旅行 / Solitaire World Tour 公開ページ
 
 App Store / Google Play への申請に必要な **プライバシーポリシー** と **サポート** のページ。
 素の HTML / CSS / JavaScript だけで作ってあり、ビルドも npm も使わない。
