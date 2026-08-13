@@ -3,7 +3,7 @@
 App Store / Google Play への申請に必要な **プライバシーポリシー** と **サポート** のページ。
 素の HTML / CSS / JavaScript だけで作ってあり、ビルドも npm も使わない。
 
-公開先: <https://shunchobi.github.io/solitaireworld-site/>
+公開先: <https://shunchobi.github.io/solitaire-world-tour-site/>
 
 | ページ | URL | 用途 |
 |---|---|---|
@@ -74,7 +74,7 @@ python3 tools/check-fonts.py    # 欠落が無いか検査する(欠けていた
 
 ## ローカルでの確認
 
-**サイトフォルダの 1 つ上から**配信する。公開先が `/solitaireworld-site/` 配下になるため、
+**サイトフォルダの 1 つ上から**配信する。公開先が `/solitaire-world-tour-site/` 配下になるため、
 同じ入れ子で見ておくとリンクの書き方の誤りに気付ける。
 
 ```bash
