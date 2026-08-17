@@ -49,7 +49,7 @@
       <div class="page-head">
         <h1>プライバシーポリシー</h1>
         <p class="lead">oneWheat(以下「当方」)は、スマートフォン向けゲームアプリ「ソリティア世界旅行」(以下「本アプリ」)において、次のとおり情報を取り扱います。</p>
-        <p class="updated">制定日: 2026年8月13日 ／ 最終更新日: 2026年8月13日</p>
+        <p class="updated">制定日: 2026年8月13日 ／ 最終更新日: 2026年8月18日</p>
       </div>
 
       <nav class="toc" aria-labelledby="ja-toc-title">
@@ -94,7 +94,7 @@
           <tbody>
             <tr>
               <th scope="row">アプリの利用状況</th>
-              <td data-label="具体的な内容">ゲームの開始とクリア、所要時間や手数、コインの増減、都市の移動、スタンプ・絵葉書・豆知識の取得状況、広告を視聴したかどうか、購入の結果</td>
+              <td data-label="具体的な内容">ゲームの開始とクリア、所要時間や手数、コインの増減、都市の移動、スタンプ・絵葉書・豆知識の取得状況、広告を視聴したかどうか<!-- 課金導入まで非表示: 、購入の結果 --></td>
               <td data-label="取得する仕組み">Firebase Analytics</td>
             </tr>
             <tr>
@@ -112,11 +112,25 @@
               <td data-label="具体的な内容">広告 ID などの端末識別子、広告の表示・操作の履歴、広告表示に関する同意の状況</td>
               <td data-label="取得する仕組み">Google AdMob</td>
             </tr>
+            <!--
+              課金導入まで非表示(2026-08-18)。
+
+              初回リリースには課金・サブスクを含めないため、購入に関わる記載を
+              コメントアウトした。ストアに出す申告(App Store Connect の App Privacy /
+              Google Play のデータセーフティ)と、この文面が食い違わないようにするため。
+              RevenueCat は初期化されず、購入情報は一切取得しない。
+
+              課金機能を入れるときは、このファイル内の「課金導入まで非表示」を
+              すべて戻し、冒頭の最終更新日を書き換える(日本語・英語の両方)。
+              対象箇所: 3. 取得する情報 / 5. 利用目的 / 7. 第三者への提供 /
+              8. 広告のパーソナライズと選択肢 / 10. 保存期間と削除のご請求
+
             <tr>
               <th scope="row">購入に関する情報</th>
               <td data-label="具体的な内容">購入した商品の ID、取引 ID、定期購入が有効かどうか</td>
               <td data-label="取得する仕組み">RevenueCat / App Store / Google Play</td>
             </tr>
+            -->
           </tbody>
         </table>
       </div>
@@ -139,7 +153,9 @@
         <li>不具合の発見と修正、および遊びやすさの改善</li>
         <li>どの機能がどの程度使われているかの把握</li>
         <li>広告の配信と、その効果の測定</li>
+        <!-- 課金導入まで非表示(2026-08-18)。理由は 3. 取得する情報 の注記を参照。
         <li>ご購入内容の反映、および「購入を復元」の処理</li>
+        -->
         <li>お問い合わせへの回答</li>
       </ul>
 
@@ -154,10 +170,12 @@
           — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>
           ／ <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase のデータ取り扱い</a>
           ／ <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">パートナーのサイトやアプリでの情報の使用</a></li>
+        <!-- 課金導入まで非表示(2026-08-18)。理由は 3. 取得する情報 の注記を参照。
         <li>RevenueCat, Inc.(購入処理の仲介)
           — <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a></li>
         <li>Apple Inc. ／ Google LLC(ストアでの決済処理)
           — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple のプライバシーポリシー</a></li>
+        -->
       </ul>
 
       <h2 id="ja-ads">8. 広告のパーソナライズと選択肢</h2>
@@ -168,14 +186,16 @@
         <li><strong>Android</strong>: 「設定」→「プライバシー」→「広告」で、<a href="https://support.google.com/googleplay/answer/3405269" target="_blank" rel="noopener">広告 ID をリセットまたは削除する</a></li>
         <li>Google アカウントの<a href="https://adssettings.google.com/" target="_blank" rel="noopener">広告設定</a>から、パーソナライズ広告を無効にする</li>
       </ul>
+      <!-- 課金導入まで非表示(2026-08-18)。理由は 3. 取得する情報 の注記を参照。
       <p>また、アプリ内でご提供している広告非表示の月額プランにご加入いただくと、本アプリ内のすべての広告が表示されなくなります。</p>
+      -->
 
       <h2 id="ja-children">9. お子様のプライバシー</h2>
       <p>本アプリは子ども向けに制作されたものではありません。13 歳未満のお子様から意図的に情報を取得することはありません。お子様の情報が送信されたことにお気づきの場合は、上記の連絡先までお知らせください。確認のうえ、削除いたします。</p>
 
       <h2 id="ja-retention">10. 保存期間と削除のご請求</h2>
       <p>Firebase Analytics で取得したイベントデータは、Google の定める保存期間に従って保管され、期間の経過後に削除されます。端末内に保存されたデータは、本アプリを削除した時点で消去されます。</p>
-      <p>ご自身に関するデータの削除をご希望の場合は、上記の連絡先メールアドレスまでご連絡ください。対象を特定するために、ご利用の端末や購入の情報をお伺いすることがあります。</p>
+      <p>ご自身に関するデータの削除をご希望の場合は、上記の連絡先メールアドレスまでご連絡ください。対象を特定するために、ご利用の端末<!-- 課金導入まで非表示: や購入 -->の情報をお伺いすることがあります。</p>
 
       <h2 id="ja-transfer">11. 国外への移転</h2>
       <p>前記の各サービスは日本国外にサーバーを設置しており、取得した情報は日本国外において保管・処理されることがあります。</p>
@@ -189,7 +209,7 @@
       <div class="page-head">
         <h1>Privacy Policy</h1>
         <p class="lead">oneWheat (&ldquo;we&rdquo;) handles information as described below in the mobile game Solitaire World Tour (the &ldquo;app&rdquo;).</p>
-        <p class="updated">Effective: 13 August 2026 &nbsp;/&nbsp; Last updated: 13 August 2026</p>
+        <p class="updated">Effective: 13 August 2026 &nbsp;/&nbsp; Last updated: 18 August 2026</p>
       </div>
 
       <nav class="toc" aria-labelledby="en-toc-title">
@@ -234,7 +254,7 @@
           <tbody>
             <tr>
               <th scope="row">In-app activity</th>
-              <td data-label="What it covers">Games started and won, time and moves taken, coins earned and spent, travel between cities, stamps, postcards and trivia collected, whether an ad was watched, and purchase outcomes</td>
+              <td data-label="What it covers">Games started and won, time and moves taken, coins earned and spent, travel between cities, stamps, postcards and trivia collected, and whether an ad was watched<!-- 課金導入まで非表示: , and purchase outcomes --></td>
               <td data-label="Collected via">Firebase Analytics</td>
             </tr>
             <tr>
@@ -252,11 +272,13 @@
               <td data-label="What it covers">Advertising ID and similar device identifiers, records of ads shown and interacted with, and your advertising consent status</td>
               <td data-label="Collected via">Google AdMob</td>
             </tr>
+            <!-- 課金導入まで非表示(2026-08-18)。理由は日本語側 3. 取得する情報 の注記を参照。
             <tr>
               <th scope="row">Purchase data</th>
               <td data-label="What it covers">Product ID, transaction ID, and whether a subscription is active</td>
               <td data-label="Collected via">RevenueCat / App Store / Google Play</td>
             </tr>
+            -->
           </tbody>
         </table>
       </div>
@@ -279,7 +301,9 @@
         <li>Finding and fixing problems, and making the game easier to play</li>
         <li>Understanding which features are used and how often</li>
         <li>Serving advertisements and measuring their performance</li>
+        <!-- 課金導入まで非表示(2026-08-18)
         <li>Applying your purchases and processing &ldquo;Restore Purchases&rdquo;</li>
+        -->
         <li>Replying to your enquiries</li>
       </ul>
 
@@ -294,10 +318,12 @@
           — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
           / <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase data handling</a>
           / <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from partner sites and apps</a></li>
+        <!-- 課金導入まで非表示(2026-08-18)
         <li>RevenueCat, Inc. (purchase processing)
           — <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
         <li>Apple Inc. / Google LLC (store payment processing)
           — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+        -->
       </ul>
 
       <h2 id="en-ads">8. Ad personalisation and your choices</h2>
@@ -308,14 +334,16 @@
         <li><strong>Android</strong>: Settings &rarr; Privacy &rarr; Ads, then <a href="https://support.google.com/googleplay/answer/3405269" target="_blank" rel="noopener">reset or delete your advertising ID</a></li>
         <li>Turn off personalised ads in your Google account&rsquo;s <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Ad settings</a></li>
       </ul>
+      <!-- 課金導入まで非表示(2026-08-18)
       <p>Subscribing to the ad-free monthly plan offered inside the app removes all advertisements from the app.</p>
+      -->
 
       <h2 id="en-children">9. Children&rsquo;s privacy</h2>
       <p>The app is not directed at children, and we do not knowingly collect information from children under 13. If you believe a child&rsquo;s information has been sent to us, please contact us at the address above and we will verify and delete it.</p>
 
       <h2 id="en-retention">10. Retention and deletion requests</h2>
       <p>Event data collected through Firebase Analytics is retained for the period set by Google and deleted once that period has passed. Data stored on your device is erased when you delete the app.</p>
-      <p>If you would like your data deleted, please email us at the address above. We may ask for details about your device or purchases so that we can identify the right records.</p>
+      <p>If you would like your data deleted, please email us at the address above. We may ask for details about your device<!-- 課金導入まで非表示: or purchases --> so that we can identify the right records.</p>
 
       <h2 id="en-transfer">11. International transfers</h2>
       <p>The services listed above operate servers outside Japan, so the information collected may be stored and processed outside Japan.</p>
