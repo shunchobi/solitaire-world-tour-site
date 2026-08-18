@@ -64,12 +64,26 @@
         <li>OS のバージョン</li>
         <li>アプリのバージョン</li>
         <li>どの画面で、何をしたときに起きたか</li>
-        <li>購入に関するお問い合わせの場合は、ご購入日時とストアからの領収書メール</li>
+        <!-- 課金導入まで非表示: <li>購入に関するお問い合わせの場合は、ご購入日時とストアからの領収書メール</li> -->
       </ul>
 
       <h2 id="ja-faq">よくあるご質問</h2>
 
       <div class="faq">
+        <!--
+          課金導入まで非表示(2026-08-19)。
+
+          初回リリースには課金・サブスクを含めないため、購入に関わる案内を
+          コメントアウトした。ストアに出す申告(App Store Connect の App Privacy と
+          年齢レーティング質問票 / Google Play のデータセーフティと IARC)では
+          「アプリ内購入なし」と回答するため、この文面が食い違わないようにする。
+          プライバシーポリシー(privacy.html)側も同じ方針で非表示にしてある。
+
+          課金機能を入れるときは、このファイル内の「課金導入まで非表示」を
+          すべて戻す(日本語・英語の両方)。対象箇所:
+          お知らせいただけると助かること / よくあるご質問の 4 件 /
+          進捗の引き継ぎ FAQ の末尾 / 動作環境の通信に関する一文
+
         <div class="faq__item">
           <h3 class="faq__q">機種変更や再インストールのあと、購入したものが見当たりません</h3>
           <p>アプリ内の「購入を復元」からお戻しいただけます。ご購入時と同じ Apple ID / Google アカウントでサインインした状態で操作してください。</p>
@@ -96,11 +110,12 @@
           <h3 class="faq__q">月額プランに入ったのに広告が表示されます</h3>
           <p>ご購入直後は、反映までに少し時間がかかることがあります。アプリを開き直すか、「購入を復元」をお試しください。それでも広告が出る場合は、ご購入日時を添えてご連絡ください。</p>
         </div>
+        -->
 
         <div class="faq__item">
           <h3 class="faq__q">進捗を別の端末に引き継げますか</h3>
           <p>申し訳ありませんが、現在のところ引き継ぎには対応していません。ゲームの進行状況はお使いの端末の中にのみ保存しており、クラウドへの同期を行っていないためです。</p>
-          <p>そのため、端末を初期化されたりアプリを削除されたりすると、進行状況は失われます。なお、ストアに購入の記録が残るもの(広告非表示の月額プランなど)は、新しい端末でも「購入を復元」でお戻しいただけます。</p>
+          <p>そのため、端末を初期化されたりアプリを削除されたりすると、進行状況は失われます。<!-- 課金導入まで非表示: なお、ストアに購入の記録が残るもの(広告非表示の月額プランなど)は、新しい端末でも「購入を復元」でお戻しいただけます。 --></p>
         </div>
 
         <div class="faq__item">
@@ -130,7 +145,8 @@
         <li>iOS 15.0 以降</li>
         <li>Android 8.0(API レベル 26)以降</li>
       </ul>
-      <p>インターネットに接続していなくてもゲームは遊べます。通信が必要なのは、広告の表示と購入のお手続きのときだけです。</p>
+      <!-- 課金導入まで非表示(2026-08-19): 課金を入れるときは「広告の表示と購入のお手続きのとき」に戻す。 -->
+      <p>インターネットに接続していなくてもゲームは遊べます。通信が必要なのは、広告を表示するときだけです。</p>
 
       <h2 id="ja-links">関連リンク</h2>
       <ul>
@@ -159,12 +175,13 @@
         <li>Your OS version</li>
         <li>The app version</li>
         <li>Which screen you were on, and what you were doing when it happened</li>
-        <li>For purchase enquiries, the date and time of purchase and the receipt email from the store</li>
+        <!-- 課金導入まで非表示: <li>For purchase enquiries, the date and time of purchase and the receipt email from the store</li> -->
       </ul>
 
       <h2 id="en-faq">Frequently asked questions</h2>
 
       <div class="faq">
+        <!-- 課金導入まで非表示(2026-08-19)。理由と戻す対象は日本語側の注記を参照。
         <div class="faq__item">
           <h3 class="faq__q">I changed phones or reinstalled, and my purchase is gone</h3>
           <p>Use &ldquo;Restore Purchases&rdquo; inside the app. Make sure you are signed in with the same Apple ID or Google account you used when you bought it.</p>
@@ -191,11 +208,12 @@
           <h3 class="faq__q">I subscribed but ads are still showing</h3>
           <p>It can take a short while for a new subscription to register. Please reopen the app, or try &ldquo;Restore Purchases&rdquo;. If ads continue, email us with the date and time of purchase.</p>
         </div>
+        -->
 
         <div class="faq__item">
           <h3 class="faq__q">Can I move my progress to another device?</h3>
           <p>Not at the moment, and we are sorry for the inconvenience. Your progress is stored only on your device and is not synchronised to any server.</p>
-          <p>This means that resetting your device or deleting the app will lose your progress. Purchases the store keeps a record of, such as the ad-free monthly plan, can still be brought back on a new device with &ldquo;Restore Purchases&rdquo;.</p>
+          <p>This means that resetting your device or deleting the app will lose your progress.<!-- 課金導入まで非表示: Purchases the store keeps a record of, such as the ad-free monthly plan, can still be brought back on a new device with &ldquo;Restore Purchases&rdquo;. --></p>
         </div>
 
         <div class="faq__item">
@@ -225,7 +243,8 @@
         <li>iOS 15.0 or later</li>
         <li>Android 8.0 (API level 26) or later</li>
       </ul>
-      <p>The game can be played without an internet connection. A connection is only needed to show advertisements and to complete purchases.</p>
+      <!-- 課金導入まで非表示(2026-08-19): 課金を入れるときは "to show advertisements and to complete purchases" に戻す。 -->
+      <p>The game can be played without an internet connection. A connection is only needed to show advertisements.</p>
 
       <h2 id="en-links">Related links</h2>
       <ul>
