@@ -7,9 +7,10 @@ App Store / Google Play への申請に必要な **プライバシーポリシ�
 
 | ページ | URL | 用途 |
 |---|---|---|
-| `index.html` | `/` | アプリ紹介と 2 ページへの入口 |
+| `index.html` | `/` | アプリの紹介(動画・説明・特徴・スクリーンショット)と各ページへの入口。**絵葉書の共有文・SNS・メディアへ渡す URL はこれ 1 本** |
 | `privacy.html` | `/privacy.html` | **Apple / Google Play のプライバシーポリシー URL** |
 | `support.html` | `/support.html` | **Apple のサポート URL** |
+| `press.html` | `/press.html` | プレスキット(事実情報・紹介文・画像・動画・GIF・素材一式の ZIP) |
 
 `?lang=ja` / `?lang=en` を付けると、その言語で開いた状態のリンクを渡せる。
 
@@ -19,8 +20,12 @@ App Store / Google Play への申請に必要な **プライバシーポリシ�
 ## 中身
 
 ```
-index.html / privacy.html / support.html   ページ本体(日英を両方持つ)
-assets/style.css                           3 枚共通のスタイル
+index.html / privacy.html / support.html / press.html   ページ本体(日英を両方持つ)
+assets/style.css                           4 枚共通のスタイル
+assets/video/promo-{ja,en}.{mp4,webm}      紹介動画の軽量版(720×1280・音声なし)。トップで自動再生
+assets/video/poster-{ja,en}.jpg            動画の最初の 1 フレーム(読み込み前の表示)
+assets/shots/{ja,en}/01..06.jpg            ストア画像の縮小版(540×960)。01 はキービジュアル
+assets/press/                              アイコン・横長のキービジュアル・GIF・素材一式の ZIP
 assets/lang.js                             言語トグルの配線
 assets/favicon.svg
 assets/fonts/*.woff2                       M PLUS Rounded 1c のサブセット
@@ -28,6 +33,20 @@ assets/fonts/OFL.txt                       フォントのライセンス(SIL OF
 tools/build-fonts.py                       サブセットの生成
 tools/check-fonts.py                       文字の欠落検査
 ```
+
+## 動画とストア素材の更新
+
+動画・スクリーンショット・ZIP の元は Unity 側の `docs/store/video/` と `docs/store/images/`。
+作り方は `tools/promo-video/README.md`(動画)と `docs/store/02-image-plan.md`(画像)。
+更新したら同じファイル名で上書きする(HTML の参照は変えない)。
+
+**公開後にやること**(`docs/store/03-launch-plan.md` §3.7):
+
+- `index.html` の `.stores` の中の「近日配信予定」の文言を、両ストアの公式バッジに差し替える。
+  App Store のバッジは Apple のマーケティングツール、Google Play のバッジは Google Play のバッジ
+  生成ページから取得し、`assets/badges/` に置く。黒いバッジ、同じ高さ、App Store を先に置く。
+  公開前に予約注文・事前登録を開いたときは、それぞれの「予約注文 / 事前登録」バッジを使う
+- 音声つきの紹介動画を YouTube に上げたら、`press.html` の「動画・GIF」に URL を足す
 
 ## 文章を直したときにやること
 
@@ -53,8 +72,8 @@ python3 tools/check-fonts.py    # 欠落が無いか検査する(欠けていた
 - **JavaScript が無効な環境では両方がそのまま縦に並んで読める**(審査担当の環境を想定した作り)
 - 表示言語の決定は `?lang=` → 前回の選択 → 端末の言語 の順
 
-> `<head>` のインラインスクリプトは 3 ページに同じものが入っている。
-> **直すときは 3 枚とも直すこと。** 描画前に走らせる必要があるため外部ファイルにできない。
+> `<head>` のインラインスクリプトは 4 ページに同じものが入っている。
+> **直すときは 4 枚とも直すこと。** 描画前に走らせる必要があるため外部ファイルにできない。
 
 ## 配色の制約
 

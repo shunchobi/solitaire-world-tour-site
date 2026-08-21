@@ -18,7 +18,7 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 SITE = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "privacy.html", "support.html"]
+PAGES = ["index.html", "privacy.html", "support.html", "press.html"]
 FONTS = ["mplus-rounded1c-400.woff2", "mplus-rounded1c-700.woff2"]
 
 # フォントが持っている必要のない文字。改行・タブや、字形を持たない制御文字。

@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>ソリティア世界旅行 / Solitaire World Tour</title>
-<meta name="description" content="ソリティア世界旅行 — 世界一周ソリティア。プライバシーポリシーとサポートのご案内。Solitaire World Tour — a solitaire game that takes you around the world. Privacy policy and support.">
+<meta name="description" content="ソリティア世界旅行 — クロンダイク・ソリティアを遊んでコインを貯め、世界の街をひとつずつ巡る癒やし系のカードゲーム。Solitaire World Tour — clear a hand of Klondike, earn coins, and fly from city to city. Free on iOS and Android.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ソリティア世界旅行 / Solitaire World Tour">
+<meta property="og:description" content="世界の街をめぐる、水彩のカードゲーム。Klondike, one city at a time.">
+<meta property="og:image" content="https://shunchobi.github.io/solitaire-world-tour-site/assets/press/feature-graphic-ja.jpg">
+<meta property="og:url" content="https://shunchobi.github.io/solitaire-world-tour-site/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/mplus-rounded1c-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
 <script>
 /* 描画前に表示言語を決めてちらつきを防ぐ。切り替えの配線は assets/lang.js。
-   優先順は ?lang= → 保存値 → 端末の言語。3 ページで同一内容に保つこと。 */
+   優先順は ?lang= → 保存値 → 端末の言語。4 ページで同一内容に保つこと。 */
 (function () {
   var d = document.documentElement, lang = null, saved = null;
   var m = /[?&]lang=(ja|en)(?:&|$)/.exec(window.location.search);
@@ -42,65 +48,185 @@
 </header>
 
 <main id="main" class="prose">
-  <div class="shell">
 
-    <div data-lang="ja">
-      <div class="page-head">
-        <h1>ソリティア世界旅行</h1>
-        <p class="lead">ソリティアを遊んでコインを貯め、世界の都市をひとつずつ巡る、癒やし系の一人用ゲームです。クリアするたびに滞在中の街の豆知識がひとつ開き、スタンプと絵葉書が旅の記録として残っていきます。</p>
+  <!-- ============================================================ 日本語 -->
+  <div data-lang="ja">
+
+    <section class="hero">
+      <div class="shell shell--wide hero__inner">
+        <div class="hero__video">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/video/poster-ja.jpg" aria-label="ゲームの紹介動画(音声なし)">
+            <source src="assets/video/promo-ja.webm" type="video/webm">
+            <source src="assets/video/promo-ja.mp4" type="video/mp4">
+          </video>
+          <img class="hero__poster" src="assets/video/poster-ja.jpg" alt="富士山を背景にしたソリティアの盤面。見出し「ゲームをクリアして、次の街へ行こう」" width="720" height="1280">
+        </div>
+        <div class="hero__copy">
+          <p class="hero__eyebrow">世界の街をめぐる、水彩のカードゲーム</p>
+          <h1 class="hero__title">ソリティア世界旅行</h1>
+          <p class="lead">ソリティアを 1 ゲームクリアするたびにコインが貯まり、滞在中の都市の豆知識がひとつ開きます。同じ都市で遊び続けると絵葉書が買えるようになり、パスポートのスタンプが押されて次の街へ旅立てます。背景はその都市を描いた水彩画で、遊ぶほど旅のアルバムが埋まっていきます。</p>
+          <div class="stores" aria-label="配信ストア">
+            <span class="stores__note">App Store / Google Play で近日配信予定 · 無料</span>
+          </div>
+          <ul class="facts">
+            <li>無料(広告あり)</li>
+            <li>iPhone / iPad / Android</li>
+            <li>日本語 / English</li>
+            <li>オフラインでも遊べます</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <ul class="portal">
-        <li class="portal__item">
-          <a href="privacy.html">
-            <span class="portal__title">プライバシーポリシー</span>
-            <span class="portal__desc">このアプリが取得する情報、取得しない情報、その使い道についてご説明します。</span>
-          </a>
-        </li>
-        <li class="portal__item">
-          <a href="support.html">
-            <span class="portal__title">サポート・お問い合わせ</span>
-            <span class="portal__desc">よくあるご質問と、お問い合わせ先をご案内します。</span>
-          </a>
-        </li>
-      </ul>
-
-      <h2>提供者</h2>
-      <div class="card">
-        <p class="contact">oneWheat</p>
-        <p class="contact__note">お問い合わせ:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+    <section class="section">
+      <div class="shell">
+        <h2>旅のしかた</h2>
+        <ul class="features">
+          <li class="features__item"><strong>クリアするたび、コインと豆知識</strong><span>1 ゲーム終えるごとにコインが貯まり、その街の豆知識がひとつ開きます。1 都市に 10 個。読み終わるころには少し詳しくなっています。</span></li>
+          <li class="features__item"><strong>街ごとの水彩の景色</strong><span>盤面の向こうに広がるのは、いま滞在している街の景色。街を移るたびに背景が変わります。</span></li>
+          <li class="features__item"><strong>スタンプと絵葉書を集める</strong><span>同じ街で遊び続けるとパスポートにスタンプが押され、コインが貯まれば絵葉書も買えます。旅路の画面がアルバムになります。</span></li>
+          <li class="features__item"><strong>行き先は地図から</strong><span>スタンプが押されたら、地図で次の街を選んで航空券を買います。遠い街ほど高くつきます。</span></li>
+          <li class="features__item"><strong>定番のクロンダイク、気楽に</strong><span>ルールは 1 枚めくりのクロンダイク・ソリティア。ヒントも一手戻すのも何度でも使えるので、詰まっても止まりません。</span></li>
+        </ul>
       </div>
-    </div>
+    </section>
 
-    <div data-lang="en">
-      <div class="page-head">
-        <h1>Solitaire World Tour</h1>
-        <p class="lead">A gentle single-player game about travelling the world. Play solitaire, save up coins, and visit cities one at a time. Every win opens a new piece of trivia about the city you are staying in, and your stamps and postcards build up into a record of the journey.</p>
+    <section class="section">
+      <div class="shell shell--wide">
+        <h2>画面</h2>
+        <ul class="shots" aria-label="スクリーンショット">
+          <li><img src="assets/shots/ja/02.jpg" alt="富士山の水彩を背景にした盤面。見出し「ゲームをクリアして、次の街へ行こう」" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/ja/03.jpg" alt="日本と韓国の都市にピンが並ぶ世界地図。見出し「旅先は世界中の街」" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/ja/04.jpg" alt="旅路の画面に並ぶ絵葉書とスタンプ。見出し「新しい街に着くたび、アルバムがたまる」" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/ja/05.jpg" alt="クリア直後に開いた豆知識のカード。見出し「訪れた街の豆知識で、どんどん詳しくなる」" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/ja/06.jpg" alt="ソウルに到着した場面。見出し「さあ、たくさんの街を訪れよう」" width="540" height="960" loading="lazy"></li>
+        </ul>
       </div>
+    </section>
 
-      <ul class="portal">
-        <li class="portal__item">
-          <a href="privacy.html">
-            <span class="portal__title">Privacy Policy</span>
-            <span class="portal__desc">What the app collects, what it does not collect, and how the information is used.</span>
-          </a>
-        </li>
-        <li class="portal__item">
-          <a href="support.html">
-            <span class="portal__title">Support &amp; Contact</span>
-            <span class="portal__desc">Frequently asked questions and how to get in touch with us.</span>
-          </a>
-        </li>
-      </ul>
+    <section class="section">
+      <div class="shell">
+        <h2>ご案内</h2>
+        <ul class="portal">
+          <li class="portal__item">
+            <a href="support.html">
+              <span class="portal__title">サポート・お問い合わせ</span>
+              <span class="portal__desc">よくあるご質問と、お問い合わせ先をご案内します。</span>
+            </a>
+          </li>
+          <li class="portal__item">
+            <a href="privacy.html">
+              <span class="portal__title">プライバシーポリシー</span>
+              <span class="portal__desc">このアプリが取得する情報、取得しない情報、その使い道についてご説明します。</span>
+            </a>
+          </li>
+          <li class="portal__item">
+            <a href="press.html">
+              <span class="portal__title">プレスキット</span>
+              <span class="portal__desc">メディアの方向けに、紹介文・画像・動画の素材をまとめています。</span>
+            </a>
+          </li>
+        </ul>
 
-      <h2>Publisher</h2>
-      <div class="card">
-        <p class="contact">oneWheat</p>
-        <p class="contact__note">Contact:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+        <h2>提供者</h2>
+        <div class="card">
+          <p class="contact">oneWheat</p>
+          <p class="contact__note">個人で開発しています。お問い合わせ:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+        </div>
       </div>
-    </div>
+    </section>
 
   </div>
+
+  <!-- ============================================================ English -->
+  <div data-lang="en">
+
+    <section class="hero">
+      <div class="shell shell--wide hero__inner">
+        <div class="hero__video">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/video/poster-en.jpg" aria-label="Game trailer (no sound)">
+            <source src="assets/video/promo-en.webm" type="video/webm">
+            <source src="assets/video/promo-en.mp4" type="video/mp4">
+          </video>
+          <img class="hero__poster" src="assets/video/poster-en.jpg" alt="A solitaire board in front of a watercolour Mount Fuji, captioned “Clear a game, fly to the next city”" width="720" height="1280">
+        </div>
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Klondike, one city at a time</p>
+          <h1 class="hero__title">Solitaire World Tour</h1>
+          <p class="lead">Clear a hand of Klondike solitaire, earn coins, and open one piece of trivia about the city you are staying in. Keep playing there and you can buy the city's postcard; once your passport is stamped, you can fly on to the next one. The background is a watercolour of each city, and your album fills up as you play.</p>
+          <div class="stores" aria-label="Stores">
+            <span class="stores__note">Coming soon on the App Store and Google Play · Free</span>
+          </div>
+          <ul class="facts">
+            <li>Free (with ads)</li>
+            <li>iPhone / iPad / Android</li>
+            <li>English / 日本語</li>
+            <li>Plays offline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <h2>How it goes</h2>
+        <ul class="features">
+          <li class="features__item"><strong>Coins and trivia with every win</strong><span>Each game you finish earns coins and opens one piece of trivia about the city — ten per city. You learn a little more with every hand.</span></li>
+          <li class="features__item"><strong>Watercolour scenery for every city</strong><span>The board sits in front of the city you are staying in. Move on, and the view changes.</span></li>
+          <li class="features__item"><strong>Stamps and postcards</strong><span>Keep playing in one city and your passport gets stamped. Save enough coins and you can buy that city's postcard. The journey screen becomes your album.</span></li>
+          <li class="features__item"><strong>Pick your destination on the map</strong><span>Once your passport is stamped, choose the next city on the map and pay the fare for the distance.</span></li>
+          <li class="features__item"><strong>Classic Klondike, easy going</strong><span>Draw-one Klondike, with unlimited hints and undo, so you never get stuck.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell shell--wide">
+        <h2>Screens</h2>
+        <ul class="shots" aria-label="Screenshots">
+          <li><img src="assets/shots/en/02.jpg" alt="The solitaire board in front of a watercolour Mount Fuji, captioned “Clear a game, fly to the next city”" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/en/03.jpg" alt="A world map with pins on cities in Japan and Korea, captioned “Cities all over the world”" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/en/04.jpg" alt="Postcards and stamps lined up on the journey screen, captioned “Every new city adds to your album”" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/en/05.jpg" alt="A trivia card opened right after a win, captioned “Learn a little more with every city”" width="540" height="960" loading="lazy"></li>
+          <li><img src="assets/shots/en/06.jpg" alt="Arriving in Seoul, captioned “So many more cities to visit”" width="540" height="960" loading="lazy"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <h2>More</h2>
+        <ul class="portal">
+          <li class="portal__item">
+            <a href="support.html">
+              <span class="portal__title">Support &amp; Contact</span>
+              <span class="portal__desc">Frequently asked questions and how to get in touch with us.</span>
+            </a>
+          </li>
+          <li class="portal__item">
+            <a href="privacy.html">
+              <span class="portal__title">Privacy Policy</span>
+              <span class="portal__desc">What the app collects, what it does not collect, and how the information is used.</span>
+            </a>
+          </li>
+          <li class="portal__item">
+            <a href="press.html">
+              <span class="portal__title">Press Kit</span>
+              <span class="portal__desc">Descriptions, images and video for press and creators.</span>
+            </a>
+          </li>
+        </ul>
+
+        <h2>Publisher</h2>
+        <div class="card">
+          <p class="contact">oneWheat</p>
+          <p class="contact__note">Made by one developer. Contact:<br><a href="mailto:solitaire.world.tour@one-wheat.com">solitaire.world.tour@one-wheat.com</a></p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
 </main>
 
 <footer class="site-footer">
@@ -110,6 +236,7 @@
         <li><a href="./"><span class="t" data-lang="ja">ホーム</span><span class="t" data-lang="en">Home</span></a></li>
         <li><a href="privacy.html"><span class="t" data-lang="ja">プライバシーポリシー</span><span class="t" data-lang="en">Privacy Policy</span></a></li>
         <li><a href="support.html"><span class="t" data-lang="ja">サポート</span><span class="t" data-lang="en">Support</span></a></li>
+        <li><a href="press.html"><span class="t" data-lang="ja">プレスキット</span><span class="t" data-lang="en">Press Kit</span></a></li>
       </ul>
       <div class="lang" role="group" aria-label="言語 / Language">
         <button type="button" class="lang__btn" data-set-lang="ja" aria-pressed="true">日本語</button>

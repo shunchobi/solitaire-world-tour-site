@@ -24,7 +24,7 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
 REPO = SITE.parent
-PAGES = ["index.html", "privacy.html", "support.html"]
+PAGES = ["index.html", "privacy.html", "support.html", "press.html"]
 
 # サブセット元。Unity 側の実機アセットをそのまま使う(コピーも改変もしない)。
 SOURCES = {
