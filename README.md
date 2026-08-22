@@ -8,7 +8,7 @@ App Store / Google Play への申請に必要な **プライバシーポリシ�
 | ページ | URL | 用途 |
 |---|---|---|
 | `index.html` | `/` | アプリの紹介(動画・説明・特徴・スクリーンショット)と各ページへの入口。**SNS・メディアへ渡す URL はこれ 1 本** |
-| `get.html` | `/get.html` | **アプリ内の「アプリを教える」が共有する URL**。開いた端末の OS を見て iPhone / iPad は App Store、Android は Google Play、それ以外は `/` へ送る。JavaScript が動かないときだけ両ストアへのリンクを見せる。検索には載せない(noindex) |
+| `get.html` | `/get.html` | **アプリ内の「アプリを共有」が共有する URL**。開いた端末の OS を見て iPhone / iPad は App Store、Android は Google Play、それ以外は `/` へ送る。JavaScript が動かないときだけ両ストアへのリンクを見せる。検索には載せない(noindex) |
 | `privacy.html` | `/privacy.html` | **Apple / Google Play のプライバシーポリシー URL** |
 | `support.html` | `/support.html` | **Apple のサポート URL** |
 | `press.html` | `/press.html` | プレスキット(事実情報・紹介文・画像・動画・GIF・素材一式の ZIP) |
