@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ソリティア世界旅行 / Solitaire World Tour</title>
+<meta name="description" content="ソリティア世界旅行 — クロンダイク・ソリティアを遊んでコインを貯め、世界の街をひとつずつ巡る癒やし系のカードゲーム。Solitaire World Tour — clear a hand of Klondike, earn coins, and fly from city to city. Free on iOS and Android.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ソリティア世界旅行 / Solitaire World Tour">
+<meta property="og:description" content="世界の街をめぐる、水彩のカードゲーム。Klondike, one city at a time.">
+<meta property="og:image" content="https://shunchobi.github.io/solitaire-world-tour-site/assets/press/feature-graphic-ja.jpg">
+<meta property="og:url" content="https://shunchobi.github.io/solitaire-world-tour-site/get.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+/* アプリ内の「アプリを教える」が共有する URL。開いた端末に合わせてストアへ送る。
+   ここに来るのは共有を受け取った人なので、読み物は挟まずそのまま送る。
+   SNS のプレビュー取得は JavaScript を実行しないため、上の og: がそのまま使われる。 */
+(function () {
+  var ua = navigator.userAgent || "";
+  var ios = /iPad|iPhone|iPod/.test(ua) ||
+    /* iPadOS 13 以降は Mac を名乗るので、指で触れるかどうかで見分ける */
+    (/Macintosh/.test(ua) && typeof document.ontouchend !== "undefined");
+  var url = ios
+    ? "https://apps.apple.com/app/id6792692437"
+    : /Android/.test(ua)
+      ? "https://play.google.com/store/apps/details?id=com.one_wheat.solitaire_world"
+      : "./";
+  /* 履歴に残さない。戻ったときにこのページへ来ないようにするため。 */
+  window.location.replace(url);
+})();
+</script>
+</head>
+<body>
+<!-- JavaScript が動かないときだけ見える。両ストアへの入口を残す。 -->
+<main class="get">
+  <h1>ソリティア世界旅行<br><span lang="en">Solitaire World Tour</span></h1>
+  <p>世界の街をめぐる、水彩のカードゲーム。<br><span lang="en">Klondike, one city at a time.</span></p>
+  <ul>
+    <li><a href="https://apps.apple.com/app/id6792692437">App Store（iPhone / iPad）</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.one_wheat.solitaire_world">Google Play（Android）</a></li>
+  </ul>
+  <p><a href="./">アプリの紹介ページ / About the app</a></p>
+</main>
+</body>
+</html>
