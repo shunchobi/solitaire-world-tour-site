@@ -18,8 +18,14 @@
 <script>
 /* アプリ内の「アプリを共有」が共有する URL。開いた端末に合わせてストアへ送る。
    ここに来るのは共有を受け取った人なので、読み物は挟まずそのまま送る。
-   SNS のプレビュー取得は JavaScript を実行しないため、上の og: がそのまま使われる。 */
+   SNS のプレビュー取得は JavaScript を実行しないため、上の og: がそのまま使われる。
+
+   ▼ Android 版の配信を開始したら戻すこと(2026-09-19 時点は審査中で未公開)
+   Google Play のページはまだ無く、開くと 404 になる。そのため Android は
+   いまだけ紹介ページへ送っている。配信が始まったら ANDROID_URL を
+   Google Play の URL に戻し、下の本文の一覧も Google Play のリンクに戻す。 */
 (function () {
+  var ANDROID_URL = "./";
   var ua = navigator.userAgent || "";
   var ios = /iPad|iPhone|iPod/.test(ua) ||
     /* iPadOS 13 以降は Mac を名乗るので、指で触れるかどうかで見分ける */
@@ -27,7 +33,7 @@
   var url = ios
     ? "https://apps.apple.com/app/id6792692437"
     : /Android/.test(ua)
-      ? "https://play.google.com/store/apps/details?id=com.one_wheat.solitaire_world"
+      ? ANDROID_URL
       : "./";
   /* 履歴に残さない。戻ったときにこのページへ来ないようにするため。 */
   window.location.replace(url);
@@ -41,7 +47,9 @@
   <p>世界の街をめぐる、水彩のカードゲーム。<br><span lang="en">Klondike, one city at a time.</span></p>
   <ul>
     <li><a href="https://apps.apple.com/app/id6792692437">App Store（iPhone / iPad）</a></li>
-    <li><a href="https://play.google.com/store/apps/details?id=com.one_wheat.solitaire_world">Google Play（Android）</a></li>
+    <!-- Android 版の配信を開始したら、上の ANDROID_URL とあわせてこの行も
+         Google Play のリンクに戻すこと。 -->
+    <li>Google Play（Android）は近日配信予定 / Coming soon on Google Play</li>
   </ul>
   <p><a href="./">アプリの紹介ページ / About the app</a></p>
 </main>
