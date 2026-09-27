@@ -43,10 +43,10 @@ tools/check-fonts.py                       文字の欠落検査
 
 **公開後にやること**(`docs/store/03-launch-plan.md` §3.7):
 
-- `index.html` の `.stores` の中の「近日配信予定」の文言を、両ストアの公式バッジに差し替える。
-  App Store のバッジは Apple のマーケティングツール、Google Play のバッジは Google Play のバッジ
-  生成ページから取得し、`assets/badges/` に置く。黒いバッジ、同じ高さ、App Store を先に置く。
-  公開前に予約注文・事前登録を開いたときは、それぞれの「予約注文 / 事前登録」バッジを使う
+- (済)`index.html` の `.stores` に両ストアの公式バッジを置いた(2026-09-28、Android 公開時)。
+  App Store のバッジは Apple のマーケティングツール、Google Play のバッジ(`googleplay-{ja,en}.png`)は
+  Google Play のバッジ生成ページから取得し、周りの透明な余白を切り落として `assets/badges/` に置いた。
+  黒いバッジ、同じ高さ(48px)、App Store を先に置く
 - 音声つきの紹介動画を YouTube に上げたら、`press.html` の「動画・GIF」に URL を足す
 
 ## 文章を直したときにやること
