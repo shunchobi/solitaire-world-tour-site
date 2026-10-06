@@ -49,7 +49,7 @@
       <div class="page-head">
         <h1>プライバシーポリシー</h1>
         <p class="lead">oneWheat(以下「当方」)は、スマートフォン向けゲームアプリ「ソリティア世界旅行」(以下「本アプリ」)において、次のとおり情報を取り扱います。</p>
-        <p class="updated">制定日: 2026年8月13日 ／ 最終更新日: 2026年8月19日</p>
+        <p class="updated">制定日: 2026年8月13日 ／ 最終更新日: 2026年10月2日</p>
       </div>
 
       <nav class="toc" aria-labelledby="ja-toc-title">
@@ -82,7 +82,7 @@
       </div>
 
       <h2 id="ja-collect">3. 取得する情報</h2>
-      <p>本アプリは、以下の情報を自動的に取得します。いずれもお客様個人を直接特定するものではありません。</p>
+      <p>本アプリは、以下の情報を自動的に取得します。いずれもお客様個人を直接特定するものではありません。「通知のための情報」は、お知らせ(プッシュ通知)を受け取ると選んだ場合にだけ取得します。</p>
 
       <div class="table-wrap" tabindex="0" role="region" aria-label="取得する情報の一覧">
         <table>
@@ -113,6 +113,11 @@
               <th scope="row">広告に関する情報</th>
               <td data-label="具体的な内容">広告 ID などの端末識別子、広告の表示・操作の履歴、広告表示に関する同意の状況</td>
               <td data-label="取得する仕組み">Google AdMob</td>
+            </tr>
+            <tr>
+              <th scope="row">通知のための情報</th>
+              <td data-label="具体的な内容">お知らせの送り先を示す端末の識別子、言語、時差、よく遊ぶ時間帯(何時台か)、最後に遊んだ日、いまいる都市の名前と絵葉書・スタンプまでの残り回数、デイリーボーナスの連続日数、遊びかけのゲームがあるかどうか</td>
+              <td data-label="取得する仕組み">Firebase Cloud Messaging / Cloudflare Workers(お知らせを受け取ると選んだ場合のみ)</td>
             </tr>
             <!--
               課金導入まで非表示(2026-08-18)。
@@ -155,6 +160,7 @@
         <li>不具合の発見と修正、および遊びやすさの改善</li>
         <li>どの機能がどの程度使われているかの把握</li>
         <li>広告の配信と、その効果の測定</li>
+        <li>お知らせを受け取ると選んだ方への、お知らせ(プッシュ通知)の送信</li>
         <!-- 課金導入まで非表示(2026-08-18)。理由は 3. 取得する情報 の注記を参照。
         <li>ご購入内容の反映、および「購入を復元」の処理</li>
         -->
@@ -162,21 +168,24 @@
       </ul>
 
       <h2 id="ja-local">6. 端末内に保存する情報</h2>
-      <p>ゲームの進行状況(盤面、所持コイン、訪問した都市、集めたスタンプ・絵葉書・豆知識)と各種設定は、お使いの端末の中にのみ保存されます。当方のサーバーへ送信することはなく、複数の端末のあいだで同期する機能もありません。</p>
+      <p>ゲームの進行状況(盤面、所持コイン、訪問した都市、集めたスタンプ・絵葉書・豆知識)と各種設定は、お使いの端末の中にのみ保存されます。複数の端末のあいだで同期する機能もありません。</p>
+      <p>ただし、お知らせを受け取ると選んだ場合は、お知らせの文面と送る時間を決めるために、「3. 取得する情報」の「通知のための情報」を当方が利用するサーバー(Cloudflare)へ送ります。進行状況そのもの(盤面や所持コインなど)は送りません。</p>
       <p>そのため、本アプリを削除すると、これらのデータも併せて消去されます。</p>
 
       <h2 id="ja-security">7. 情報の安全管理</h2>
       <p>端末から送信される情報は、いずれも暗号化された通信(HTTPS / TLS)を用いて送信されます。端末内に保存されるデータは、OS が提供するアプリ専用の保存領域に置かれ、他のアプリから読み取られることはありません。</p>
-      <p>当方は、取得した情報を本アプリの改善・広告の配信・お問い合わせ対応に必要な範囲でのみ取り扱います。前記の各サービスに保管された情報の安全管理は、各社が定める基準に従って行われます。</p>
+      <p>当方は、取得した情報を本アプリの改善・広告の配信・お知らせの送信・お問い合わせ対応に必要な範囲でのみ取り扱います。前記の各サービスに保管された情報の安全管理は、各社が定める基準に従って行われます。</p>
 
       <h2 id="ja-third-party">8. 第三者への提供</h2>
       <p>前記の情報は、以下の各社のサービスによって取得・処理されます。当方が、お客様を特定する目的で情報を第三者に販売することはありません。</p>
       <p>これらの提供先は、いずれも本ポリシーと同等以上の水準で情報を保護することを各社のプライバシーポリシーおよび利用条件で定めており、当方はその内容を確認したうえで各サービスを利用しています。</p>
       <ul>
-        <li>Google LLC(Firebase Analytics、Firebase Authentication、Google AdMob)
+        <li>Google LLC(Firebase Analytics、Firebase Authentication、Firebase Cloud Messaging、Google AdMob)
           — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>
           ／ <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase のデータ取り扱い</a>
           ／ <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">パートナーのサイトやアプリでの情報の使用</a></li>
+        <li>Cloudflare, Inc.(お知らせの送信時期と文面を決めるサーバー。お知らせを受け取ると選んだ場合のみ)
+          — <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">プライバシーポリシー</a></li>
         <!-- 課金導入まで非表示(2026-08-18)。理由は 3. 取得する情報 の注記を参照。
         <li>RevenueCat, Inc.(購入処理の仲介)
           — <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a></li>
@@ -203,15 +212,16 @@
       <p><strong>処理の法的根拠</strong></p>
       <ul>
         <li>広告の配信およびパーソナライズ — お客様の<strong>同意</strong>(GDPR 第 6 条 1 項 (a))。同意はアプリ内の同意確認画面で取得します</li>
+        <li>お知らせ(プッシュ通知)の送信と、そのための「通知のための情報」の取得 — お客様の<strong>同意</strong>(同項 (a))。同意はアプリ内の問いかけ(または設定画面の「通知」)と、端末の通知の許可で取得します</li>
         <li>アプリの改善、利用状況の把握、不具合の発見と修正 — 当方の<strong>正当な利益</strong>(同項 (f))。個人を特定しない範囲でアプリの品質を保つための処理です</li>
         <li>お問い合わせへの回答 — 当方の<strong>正当な利益</strong>(同項 (f))</li>
       </ul>
       <p><strong>お客様の権利</strong></p>
       <p>お客様は、ご自身に関する個人データについて、アクセス・訂正・削除・処理の制限・処理への異議・データポータビリティを求める権利をお持ちです。行使をご希望の場合は、上記の連絡先メールアドレスまでご連絡ください。</p>
       <p><strong>同意の撤回</strong></p>
-      <p>広告に関する同意は、いつでも撤回できます。方法は「9. 広告のパーソナライズと選択肢」に記載したとおり、アプリの設定画面の「広告の設定」からお願いします。撤回は将来に向かってのみ効力を持ち、撤回前に行われた処理の適法性には影響しません。</p>
+      <p>広告に関する同意は、いつでも撤回できます。方法は「9. 広告のパーソナライズと選択肢」に記載したとおり、アプリの設定画面の「広告の設定」からお願いします。お知らせに関する同意は、アプリの設定画面の「通知」をオフにすることで撤回できます。撤回は将来に向かってのみ効力を持ち、撤回前に行われた処理の適法性には影響しません。</p>
       <p><strong>域外への移転</strong></p>
-      <p>取得した情報は、EEA・英国・スイスの域外にあたる日本および米国において保管・処理されます。移転にあたっては、各サービス提供者が定める標準契約条項などの保護措置にもとづいて取り扱われます。</p>
+      <p>取得した情報は、EEA・英国・スイスの域外にあたる日本・米国などにおいて保管・処理されます。移転にあたっては、各サービス提供者が定める標準契約条項などの保護措置にもとづいて取り扱われます。</p>
       <p><strong>監督機関への申立て</strong></p>
       <p>お取り扱いにご不満がある場合、お住まいの国のデータ保護監督機関に苦情を申し立てる権利があります。お申し立ての前に、まず上記の連絡先までご連絡いただけますと幸いです。</p>
 
@@ -220,6 +230,7 @@
 
       <h2 id="ja-retention">12. 保存期間と削除のご請求</h2>
       <p>Firebase Analytics で取得したイベントデータは、取得から 14 か月のあいだ保管し、期間の経過後に削除します。分析のためにこのデータを BigQuery へ書き出す場合も、同じ期間で削除します。端末内に保存されたデータは、本アプリを削除した時点で消去されます。</p>
+      <p>通知のための情報は、アプリの設定画面で「通知」をオフにした時点で削除します。オフにしない場合も、最後に本アプリを使ってから 30 日で削除します。お知らせを送った記録も、送ってから 30 日で削除します。</p>
       <p>ご自身に関するデータの削除をご希望の場合は、上記の連絡先メールアドレスまでご連絡ください。対象を特定するために、ご利用の端末<!-- 課金導入まで非表示: や購入 -->の情報をお伺いすることがあります。</p>
 
       <h2 id="ja-transfer">13. 国外への移転</h2>
@@ -234,7 +245,7 @@
       <div class="page-head">
         <h1>Privacy Policy</h1>
         <p class="lead">oneWheat (&ldquo;we&rdquo;) handles information as described below in the mobile game Solitaire World Tour (the &ldquo;app&rdquo;).</p>
-        <p class="updated">Effective: 13 August 2026 &nbsp;/&nbsp; Last updated: 19 August 2026</p>
+        <p class="updated">Effective: 13 August 2026 &nbsp;/&nbsp; Last updated: 2 October 2026</p>
       </div>
 
       <nav class="toc" aria-labelledby="en-toc-title">
@@ -267,7 +278,7 @@
       </div>
 
       <h2 id="en-collect">3. Information we collect</h2>
-      <p>The app automatically collects the following. None of it identifies you directly.</p>
+      <p>The app automatically collects the following. None of it identifies you directly. &ldquo;Notification data&rdquo; is collected only if you choose to receive notifications.</p>
 
       <div class="table-wrap" tabindex="0" role="region" aria-label="Information we collect">
         <table>
@@ -299,6 +310,11 @@
               <td data-label="What it covers">Advertising ID and similar device identifiers, records of ads shown and interacted with, and your advertising consent status</td>
               <td data-label="Collected via">Google AdMob</td>
             </tr>
+            <tr>
+              <th scope="row">Notification data</th>
+              <td data-label="What it covers">A device identifier that tells us where to deliver notifications, your language, time zone offset, the hour of day you usually play, the date you last played, the name of the city you are in and how many more wins until its postcard or stamp, your daily bonus streak, and whether you have an unfinished game</td>
+              <td data-label="Collected via">Firebase Cloud Messaging / Cloudflare Workers (only if you choose to receive notifications)</td>
+            </tr>
             <!-- 課金導入まで非表示(2026-08-18)。理由は日本語側 3. 取得する情報 の注記を参照。
             <tr>
               <th scope="row">Purchase data</th>
@@ -328,6 +344,7 @@
         <li>Finding and fixing problems, and making the game easier to play</li>
         <li>Understanding which features are used and how often</li>
         <li>Serving advertisements and measuring their performance</li>
+        <li>Sending notifications to players who chose to receive them</li>
         <!-- 課金導入まで非表示(2026-08-18)
         <li>Applying your purchases and processing &ldquo;Restore Purchases&rdquo;</li>
         -->
@@ -335,21 +352,24 @@
       </ul>
 
       <h2 id="en-local">6. Data stored on your device</h2>
-      <p>Your progress (the board, coin balance, cities visited, and the stamps, postcards and trivia you have collected) and your settings are stored only on your device. They are never sent to our servers, and there is no synchronisation between devices.</p>
+      <p>Your progress (the board, coin balance, cities visited, and the stamps, postcards and trivia you have collected) and your settings are stored only on your device. There is no synchronisation between devices.</p>
+      <p>If you choose to receive notifications, the &ldquo;Notification data&rdquo; described in &ldquo;3. Information we collect&rdquo; is sent to the server we use (Cloudflare) so that we can decide what each notification says and when to send it. Your progress itself (such as the board or your coin balance) is not sent.</p>
       <p>This also means that deleting the app deletes this data along with it.</p>
 
       <h2 id="en-security">7. How we keep information secure</h2>
       <p>Everything sent from your device is transmitted over an encrypted connection (HTTPS / TLS). Data held on the device is kept in the app&rsquo;s own storage area provided by the operating system, where other apps cannot read it.</p>
-      <p>We handle the information we collect only to the extent needed to improve the app, serve advertisements and answer enquiries. Information held by the services listed below is secured according to the standards each of those companies sets.</p>
+      <p>We handle the information we collect only to the extent needed to improve the app, serve advertisements, send notifications and answer enquiries. Information held by the services listed below is secured according to the standards each of those companies sets.</p>
 
       <h2 id="en-third-party">8. Third parties</h2>
       <p>The information described above is collected and processed by the following services. We do not sell information to third parties for the purpose of identifying you.</p>
       <p>Each of these third parties is bound by its own privacy policy and terms to protect your information to a standard equal to or greater than the one described in this policy, and we reviewed those terms before adopting their services.</p>
       <ul>
-        <li>Google LLC (Firebase Analytics, Firebase Authentication, Google AdMob)
+        <li>Google LLC (Firebase Analytics, Firebase Authentication, Firebase Cloud Messaging, Google AdMob)
           — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
           / <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase data handling</a>
           / <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from partner sites and apps</a></li>
+        <li>Cloudflare, Inc. (the server that decides when to send notifications and what they say; only if you choose to receive notifications)
+          — <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy Policy</a></li>
         <!-- 課金導入まで非表示(2026-08-18)
         <li>RevenueCat, Inc. (purchase processing)
           — <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
@@ -376,15 +396,16 @@
       <p><strong>Legal bases for processing</strong></p>
       <ul>
         <li>Serving and personalising advertisements — your <strong>consent</strong> (GDPR Article 6(1)(a)), obtained through the consent screen shown inside the app</li>
+        <li>Sending notifications, and collecting the notification data needed for them — your <strong>consent</strong> (Article 6(1)(a)), obtained through the in-app question (or the Notifications switch on the settings screen) and your device&rsquo;s notification permission</li>
         <li>Improving the app, understanding how it is used, and finding and fixing problems — our <strong>legitimate interests</strong> (Article 6(1)(f)) in keeping the app working well, without identifying you</li>
         <li>Replying to your enquiries — our <strong>legitimate interests</strong> (Article 6(1)(f))</li>
       </ul>
       <p><strong>Your rights</strong></p>
       <p>You have the right to access your personal data and to ask us to rectify or erase it, to restrict or object to its processing, and to receive it in a portable form. To exercise any of these rights, email us at the address above.</p>
       <p><strong>Withdrawing consent</strong></p>
-      <p>You can withdraw your advertising consent at any time through Ad settings on the app&rsquo;s settings screen, as described in &ldquo;9. Ad personalisation and your choices&rdquo;. Withdrawal takes effect going forward and does not affect the lawfulness of processing carried out before it.</p>
+      <p>You can withdraw your advertising consent at any time through Ad settings on the app&rsquo;s settings screen, as described in &ldquo;9. Ad personalisation and your choices&rdquo;. You can withdraw your consent to notifications by turning off Notifications on the app&rsquo;s settings screen. Withdrawal takes effect going forward and does not affect the lawfulness of processing carried out before it.</p>
       <p><strong>Transfers outside your region</strong></p>
-      <p>The information collected is stored and processed in Japan and the United States, which are outside the EEA, the UK and Switzerland. These transfers are covered by the safeguards each service provider has put in place, such as standard contractual clauses.</p>
+      <p>The information collected is stored and processed in countries such as Japan and the United States, which are outside the EEA, the UK and Switzerland. These transfers are covered by the safeguards each service provider has put in place, such as standard contractual clauses.</p>
       <p><strong>Complaints</strong></p>
       <p>You have the right to lodge a complaint with the data protection authority in your country. We would appreciate the chance to address your concern first, so please do contact us at the address above.</p>
 
@@ -393,6 +414,7 @@
 
       <h2 id="en-retention">12. Retention and deletion requests</h2>
       <p>Event data collected through Firebase Analytics is retained for 14 months from collection and deleted once that period has passed. Where this data is exported to BigQuery for analysis, it is deleted on the same schedule. Data stored on your device is erased when you delete the app.</p>
+      <p>Notification data is deleted as soon as you turn off Notifications on the app&rsquo;s settings screen. Even if you do not, it is deleted 30 days after you last used the app. Records of the notifications we sent are deleted 30 days after sending.</p>
       <p>If you would like your data deleted, please email us at the address above. We may ask for details about your device<!-- 課金導入まで非表示: or purchases --> so that we can identify the right records.</p>
 
       <h2 id="en-transfer">13. International transfers</h2>
